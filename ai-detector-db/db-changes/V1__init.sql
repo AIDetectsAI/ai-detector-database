@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS users
     login     VARCHAR(50),
     password  VARCHAR(64),
     email     VARCHAR(50),
-    isDeleted BOOLEAN DEFAULT FALSE
+    is_deleted BOOLEAN DEFAULT FALSE
 );
