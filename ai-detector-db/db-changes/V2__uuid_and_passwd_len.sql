@@ -1,16 +1,16 @@
 ALTER TABLE users
-ADD COLUMN new_id UUID;
+ADD COLUMN temp_id UUID;
 
 ALTER TABLE users
 DROP CONSTRAINT users_pkey;
 
-ALTER TABLE users ADD PRIMARY KEY (new_id);
+ALTER TABLE users ADD PRIMARY KEY (temp_id);
 
 ALTER TABLE users
 DROP COLUMN id;
 
 ALTER TABLE users
-RENAME COLUMN new_id TO id;
+RENAME COLUMN temp_id TO id;
 
 ALTER TABLE users
 ALTER COLUMN password TYPE VARCHAR(161);
