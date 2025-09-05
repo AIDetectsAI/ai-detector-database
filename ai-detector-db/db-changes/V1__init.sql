@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS users
 (
-    id        SERIAL PRIMARY KEY, --todo later make this a UUID or another nice id
+    id        SERIAL PRIMARY KEY,
     login     VARCHAR(50),
     password  VARCHAR(64),
     email     VARCHAR(50),
