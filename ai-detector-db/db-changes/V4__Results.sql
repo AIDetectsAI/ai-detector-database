@@ -1,4 +1,3 @@
--- create result, create history (list of results), alter user
 CREATE TABLE IF NOT EXISTS results
 (
     result_id   SERIAL PRIMARY KEY,
