@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS results
     photo_id    UUID NOT NULL,
     user_id     UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     model       VARCHAR(50) NOT NULL,
-    chance      NUMERIC(4, 2) NOT NULL,-- -99,9 to +99,9. Should be ok for majority of ways AI team can return the chance.
+    chance      NUMERIC(4, 2) NOT NULL,-- -99,99 to +99,99. Should be ok for majority of ways AI team can return the chance.
     created_at TIMESTAMP DEFAULT NOW() NOT NULL,
     is_deleted BOOLEAN DEFAULT FALSE
 );
