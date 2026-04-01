@@ -22,15 +22,9 @@ ALTER TABLE users
 
 CREATE TABLE IF NOT EXISTS roles
 (
-    id
-    SERIAL
-    PRIMARY
-    KEY,
-    name
-    VARCHAR
-(
-    50
-) UNIQUE NOT NULL);
+    id SERIAL PRIMARY KEY,
+    name VARCHAR (50) UNIQUE NOT NULL
+);
 
 INSERT INTO roles (name)
 VALUES ('USER'),
@@ -38,23 +32,10 @@ VALUES ('USER'),
 
 CREATE TABLE IF NOT EXISTS user_roles
 (
-    user_id
-    UUID
-    NOT
-    NULL
-    REFERENCES
-    users
-(
-    id
-) ON DELETE CASCADE,
-    role_id INT NOT NULL REFERENCES roles
-(
-    id
-)
-  ON DELETE CASCADE,
-    PRIMARY KEY
-(
-    user_id,
-    role_id
-)
-    );
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    role_id INT NOT NULL REFERENCES roles(id) ON DELETE CASCADE,
+    PRIMARY KEY (
+        user_id,
+        role_id
+    )
+);

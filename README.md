@@ -25,7 +25,7 @@ db-run.sh
 
 # Adding .env file
 
-Before running the scripts, ensure you have a `.env` file in the db-changes directory. You can copy that file from files in Teams, Discord or create it manually with the necessary environment variables.
+Before running the scripts, ensure you have a `.env` file in the ai-detector-db directory. You can copy that file from files in Teams, Discord or create it manually with the necessary environment variables.
 
 ### Pro Tip
 
