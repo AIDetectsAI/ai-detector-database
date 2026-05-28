@@ -6,7 +6,7 @@ cd "$(dirname "$0")/ai-detector-db" || {
 }
 
 echo "Stopping and removing all Docker containers and associated volumes..."
-docker-compose down -v
+docker compose down -v
 
 echo "Starting up the Docker containers..."
-docker-compose up
+docker compose up
