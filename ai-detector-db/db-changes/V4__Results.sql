@@ -6,5 +6,6 @@ CREATE TABLE IF NOT EXISTS results
     model       VARCHAR(50) NOT NULL,
     chance      NUMERIC(4, 2) NOT NULL,-- -99,99 to +99,99. Should be ok for majority of ways AI team can return the chance.
     created_at TIMESTAMP DEFAULT NOW() NOT NULL,
-    is_deleted BOOLEAN DEFAULT FALSE
+    is_deleted BOOLEAN DEFAULT FALSE,
+    caption TEXT
 );
