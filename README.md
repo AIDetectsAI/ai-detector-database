@@ -34,3 +34,7 @@ Remember that you have to have Docker installed and running on your machine for 
 ### Fedora users
 
 You need to turn off SELinux with `setenforce 0` before executing the script
+
+### Cloud
+To run a blob storage you need to create .env file in ai-detector-cloud with these environmental variables: MINIO_ROOT_USER, MINIO_ROOT_PASSWORD, USER_LOGIN,
+USER_PASSWORD. User password length should be between 8 and 40. By default user can read and write files. Then you need to cd to ai-detector-cloud and type docker-compose up -d. WEB panel is available on port 9001 and API on port 9000.

@@ -1,0 +1,33 @@
+services:
+  minio:
+    image: quay.io/minio/minio:latest
+    container_name: minio-blob-storage
+    ports:
+      - "9000:9000"    # API Port
+      - "9001:9001"    # Console Port
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - ./data:/data
+    command: server /data --console-address ":9001"
+    restart: always
+
+  minio-setup:
+    image: minio/mc
+    container_name: minio-setup
+    depends_on:
+      - minio
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+      - USER_LOGIN=${USER_LOGIN}
+      - USER_PASSWORD=${USER_PASSWORD}
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc alias set myminio http://minio:9000 $$MINIO_ROOT_USER $$MINIO_ROOT_PASSWORD) do sleep 1; done;
+      /usr/bin/mc mb myminio/aidetectsai || true;
+      /usr/bin/mc admin user add myminio $$USER_LOGIN $$USER_PASSWORD || true;
+      /usr/bin/mc admin policy attach myminio readwrite --user $$USER_LOGIN;
+      exit 0;
+      "
